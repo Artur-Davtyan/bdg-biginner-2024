@@ -1,0 +1,47 @@
+docker ps 
+docker ps -a
+docker logs -f 2f2670fb8223 
+docker network create my-net
+docker network list 
+docker iamges
+docker run --name nginx1 --network my-net
+docker run --name nginx1 --network my-net nginx 
+docker ps 
+docker rm -f nginx1
+docker run -d --name nginx1 --network my-net -p 8085:80 nginx 
+docker ps 
+docker run -d --name nginx2 --network my-net -p 8086:80 nginx 
+docker ps 
+docker exec -ti nginx2 
+docker exec -ti nginx2bash
+docker ps 
+docker run --name nginx-none -d --network none nginx
+docker ps 
+docker exec -ti nginx-none bash
+docker exec -ti nginx2 bash
+docker ps 
+docker ps 
+docker inspect nginx-none 
+docker inspect nginx1 
+docker network create --help 
+docker ps
+docker ps -a
+docker update -d --restart on-failure nginx1 
+docker update--restart on-failure nginx1 
+docker ps 
+docker start nginx1 nginx2 nginx-none
+docker update --restart unless-stopped nginx2
+docker ps 
+docker start nginx1 nginx2 nginx-none
+sudo systemctl restart docker
+docker ps 
+docker update --restart always nginx-none 
+docker start nginx1 nginx2 nginx-none
+sudo systemctl restart docker
+docker ps 
+docker stop nginx2 nginx-none 
+sudo systemctl restart docker
+docker ps 
+docker exec -ti nginx1 bash
+docker ps 
+docker ps -a
