@@ -1,0 +1,33 @@
+- name: this is lesson20 with using template task
+  hosts: AWS
+  become: true
+  vars:
+    server_name: template.com
+    service_name: nginx
+    listen_port: 8080
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: create directory
+      file:
+        path: /var/www/"{{ server_name }}"
+        state: 'directory'
+    - name: copy template file
+      template:
+        src: 'templates/default.conf.j2'
+        dest: '/etc/nginx/conf.d/default.conf'
+    - name: "Copy my index.html to remote host"
+      copy:
+        src: files/index.html
+        dest: /var/www/"{{ server_name }}"/index.html
+        owner: root
+        group: root
+        mode: '0644'
+      notify: 'Restart nginx service'
+  handlers:
+    - name: Restart nginx service
+      service:
+        name: "{{ service_name }}"
+        state: 'restarted'
