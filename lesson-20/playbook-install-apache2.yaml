@@ -31,3 +31,12 @@
       file:
         path: '/home/ubuntu/test1'
         state: 'directory'
+    - name: "create document in home directory by loop"
+      file:
+        path: '{{ item }}'
+        state: 'directory'
+      loop:
+      - '/home/ubuntu/test2'
+      - '/home/ubuntu/test3'
+      - '/home/ubuntu/test4'
+      become: true
