@@ -24,3 +24,10 @@
       service:
         name: "{{ service_name }}"
         state: 'restarted'
+- name: check loop
+  hosts: AWS
+  tasks:
+    - name: "create document in home directory"
+      file:
+        path: '/home/ubuntu/test1'
+        state: 'directory'
