@@ -40,3 +40,4 @@
       - '/home/ubuntu/test3'
       - '/home/ubuntu/test4'
       become: true
+- name: using when condition
