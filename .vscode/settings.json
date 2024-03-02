@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "file:///Users/adavtyan/tmp/bdg-biginner-2024/lesson-20/playbook-install-apache2.yaml"
+  }
+}

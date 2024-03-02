@@ -40,4 +40,14 @@
       - '/home/ubuntu/test3'
       - '/home/ubuntu/test4'
       become: true
-- name: using when condition
+- name: using condition
+  hosts: AWS
+  become: true
+  tasks:
+    - name: install tree command in Debian
+      shell: 'apt update && sudo apt install tree -y'
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: install git command in Debian
+      shell: 'apt install git -y'
+      when: ansible_facts['python']['type'] == "cpython"
