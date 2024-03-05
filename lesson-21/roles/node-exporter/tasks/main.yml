@@ -3,5 +3,5 @@
 - name: Download node_exporter-1.7.0.linux-amd64.tar.gz
   get_url:
     url: https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
-    dest: /home/node_exporter-1.7.0.linux-amd64.tar.gz
+    dest: /home/ubuntu/node_exporter-1.7.0.linux-amd64.tar.gz
     mode: '0644'
