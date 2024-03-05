@@ -1,0 +1,4 @@
+[AWS]
+13.60.35.112 ansible_user=ubuntu
+
+[AWS:vars]
