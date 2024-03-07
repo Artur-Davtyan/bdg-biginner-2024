@@ -3,3 +3,8 @@
 - name: Create docker network
   docker_network:
     name: "{{ network }}"
+
+- name: Copy files
+  copy:
+    src: index.html
+    dest: /home/ubuntu/index.html
