@@ -2,4 +2,4 @@
 51.20.37.239 ansible_user=ubuntu
 
 [AWS:vars]
-network: monitoring
+network= monitoring
