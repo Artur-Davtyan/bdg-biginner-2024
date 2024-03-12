@@ -1,0 +1,25 @@
+name: CI/CD Lesson 23
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build the Docker image
+      run: |
+        cd lesson-23
+        docker build . --file Dockerfile --tag arturdavtyan/nginx:$(date +%s)
+      
