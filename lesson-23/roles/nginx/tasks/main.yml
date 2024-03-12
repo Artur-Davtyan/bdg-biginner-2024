@@ -9,5 +9,3 @@
      - "80:80"
     restart: yes
     restart_policy: always
-    purge_networks: yes
-    networks_cli_compatible: yes
