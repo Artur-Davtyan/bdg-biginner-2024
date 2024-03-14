@@ -14,4 +14,4 @@ jobs:
     - name: Ansible playbook run
       run: |
         cd lesson-24
-        ansible-playbook -e ec2_access_key=${{ secrets.access_key }}-e ec2_secret_key=${{ secrets.secret_key }} playbook-aws.yaml
+        ansible-playbook -e ec2_access_key=${{ secrets.ACCESS_KEY }}-e ec2_secret_key=${{ secrets.SECRET_KEY }} playbook-aws.yaml
