@@ -1,0 +1,17 @@
+name: EC2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ec2:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Ansible playbook run
+      run: |
+        cd lesson-24
+        ansible-playbook -e ec2_access_key=${{ secrets.access_key }}-e ec2_secret_key=${{ secrets.secret_key }} playbook-aws.yaml

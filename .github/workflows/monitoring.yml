@@ -1,0 +1,28 @@
+name: Monitoring
+env:
+  Image_tag: ${{ github.run_number }}
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  monitoring:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: add keyscan
+      run: |
+        ssh-keyscan 51.20.66.134 >> ~/.ssh/known_hosts
+
+    - name: Ansible playbook run
+      run: |
+        cd lesson-24
+        ansible-playbook -i inventory/dev/hosts  playbook.yaml
