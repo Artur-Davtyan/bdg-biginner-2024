@@ -44,7 +44,7 @@
       assign_public_ip: true
     image_id: "{{ image }}"
     tags:
-      Environment: Testing
+      Environment: Testing1
 
 - name: Get instances facts
   ec2_instance_info:
@@ -53,7 +53,7 @@
     region: "{{ region }}"
   register: result
 
-- name: Instances ID
-  debug:
-    msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
-  loop: "{{ result.instances }}"
+# - name: Instances ID
+#   debug:
+#     msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
+#   loop: "{{ result.instances }}"
