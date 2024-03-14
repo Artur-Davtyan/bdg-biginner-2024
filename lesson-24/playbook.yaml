@@ -3,4 +3,5 @@
   roles:
     - commons
     - node-exporter
+    - prometheus
     - grafana
