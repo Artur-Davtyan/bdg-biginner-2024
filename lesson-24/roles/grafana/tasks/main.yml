@@ -1,0 +1,34 @@
+---
+# tasks file for roles/grafana
+- name: Copy files
+  copy:
+    src: dashboards
+    dest: /home/ubuntu
+
+- name: Copy files
+  copy:
+    src: provisioning
+    dest: /home/ubuntu
+
+
+# Creating Grafana container
+- name: Creating Grafana container
+  docker_container:
+    name: grafana
+    image: grafana/grafana
+    restart: yes
+    restart_policy: always
+    recreate: yes
+    env:
+       GF_SECURITY_ADMIN_USER: admin1
+       GF_SECURITY_ADMIN_PASSWORD: admin123
+    volumes:
+        - /home/ubuntu/dashboards:/var/lib/grafana/dashboards
+        - /home/ubuntu/provisioning/datasources:/etc/grafana/provisioning/datasources
+        - /home/ubuntu/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+    networks:
+        - name: "{{ network }}"
+    ports:
+        - 3000:3000
+    purge_networks: yes
+    networks_cli_compatible: yes

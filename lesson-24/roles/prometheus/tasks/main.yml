@@ -1,0 +1,24 @@
+---
+# tasks file for roles/prometheus
+- name: copy prometheus yaml file
+  copy:
+    src: prometheus.yml
+    dest: /home/ubuntu/prometheus/prometheus.yml
+
+- name: Create Prometheus container
+  docker_container:
+    name: prometheus
+    image: prom/prometheus:latest
+    networks:
+    - name: "{{ network }}"
+    recreate: yes
+    ports:
+      - "9090:9090"
+    volumes:
+      - /home/ubuntu/prometheus:/etc/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    restart: yes
+    restart_policy: always
+    purge_networks: yes
+    networks_cli_compatible: yes
