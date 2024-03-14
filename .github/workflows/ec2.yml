@@ -14,4 +14,5 @@ jobs:
     - name: Ansible playbook run
       run: |
         cd lesson-24
+        ansible-galaxy collection install amazon.aws
         ansible-playbook -e ec2_access_key=${{ secrets.ACCESS_KEY }} -e ec2_secret_key=${{ secrets.SECRET_KEY }} playbook-aws.yaml
